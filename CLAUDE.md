@@ -13,7 +13,7 @@ There is no test suite, no linter, and no build step configured in this repo.
 - Install deps: `npm install`
 - Run locally: `node index.js` (listens on `PORT` env var, defaults to `3333`)
 - Build container image: `docker build --platform=linux/amd64 -t gcr.io/jawis-core/api-notify:<tag> .` (the platform flag is required — see Runtime environment)
-- Deploy to the cluster: `kubectl apply -f k8s/` (applies Deployment, Service, and HPA to namespace `default` on the `jawis-gke` GKE cluster, project `jawis-core`)
+- Deploy to the cluster: Kubernetes manifests are **not** in this repo. They live in the sibling `deploy-jawis` repo under `api-notify/` (Deployment, Service, HPA, and an nginx Ingress), applied to namespace `default` on the `jawis-gke` GKE cluster, project `jawis-core`. The local kubectl default context may point at a different cluster, so pass `--context=gke_jawis-core_asia-southeast1-a_jawis-gke` explicitly.
 
 `npm test` is a stub (`echo "Error: no test specified" && exit 1`) — there are no real tests to run.
 
